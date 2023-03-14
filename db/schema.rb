@@ -10,39 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2023_03_14_032851) do
 
-  create_table "answer", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "answers", id: false, charset: "utf8mb3", force: :cascade do |t|
     t.integer "id"
     t.integer "question_id"
     t.boolean "correct_answer"
     t.string "content"
   end
 
-  create_table "category", id: :integer, default: nil, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "categories", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "lesson", id: :integer, default: nil, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "lessons", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
     t.integer "category_id"
     t.string "name"
     t.index ["category_id"], name: "category_id"
   end
 
-  create_table "question", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "questions", id: false, charset: "utf8mb3", force: :cascade do |t|
     t.integer "id"
     t.integer "lesson_id"
     t.string "content"
     t.index ["lesson_id"], name: "lesson_id"
   end
 
-  create_table "relationship", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "relationship", id: false, charset: "utf8mb3", force: :cascade do |t|
     t.integer "id"
     t.integer "follower_id"
     t.integer "followed_id"
   end
 
-  create_table "result", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "results", id: false, charset: "utf8mb3", force: :cascade do |t|
     t.integer "id"
     t.integer "lesson_id"
     t.integer "user_id"
@@ -51,14 +51,20 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "user_id"
   end
 
-  create_table "user", id: :integer, default: nil, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
-    t.string "email"
     t.string "avatar"
     t.boolean "admin"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "word", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "words", id: false, charset: "utf8mb3", force: :cascade do |t|
     t.integer "id"
     t.integer "category_id"
     t.string "word"
@@ -67,9 +73,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["category_id"], name: "category_id"
   end
 
-  add_foreign_key "lesson", "category", name: "lesson_ibfk_1"
-  add_foreign_key "question", "lesson", name: "question_ibfk_1"
-  add_foreign_key "result", "lesson", name: "result_ibfk_2"
-  add_foreign_key "result", "user", name: "result_ibfk_1"
-  add_foreign_key "word", "category", name: "word_ibfk_1"
+  add_foreign_key "lessons", "categories", name: "lessons_ibfk_1"
+  add_foreign_key "questions", "lessons", name: "questions_ibfk_1"
+  add_foreign_key "results", "lessons", name: "results_ibfk_2"
+  add_foreign_key "results", "users", name: "results_ibfk_1"
+  add_foreign_key "words", "categories", name: "words_ibfk_1"
 end
