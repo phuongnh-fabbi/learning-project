@@ -8,14 +8,14 @@
       </button>
 
       <!-- lOGO TEXT HERE -->
-      <a href="#" class="navbar-brand">E-learning</a>
+      <%= link_to 'E-learning', root_path, class: "navbar-brand" %>
     </div>
 
     <!-- MENU LINKS -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-nav-first">
         <% if user_signed_in?%>
-          <li><a href="#">Home</a></li>
+          <li><%= link_to 'Home', root_path %></li>
           <li><a href="#">Memorised Word</a></li>
           <li><a href="#">Category</a></li>
           <li><a href="#">Exam</a></li>

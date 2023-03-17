@@ -1,27 +1,27 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :edit, :update]
+
   def show
-    @user = User.find(current_user.id)
   end
 
   def edit
-    @user = User.find(current_user.id)
   end
 
   def update
-    if current_user.update(user_params)
-      flash[:success] = "Profile updated"
+    if @user.update(user_params)
+      flash[:success] = t('controllers.update.success')
       redirect_to user_path
     else
-      render 'edit'
+      render :edit
     end
   end
 
   private
+  def find_user
+    @user = User.find_by(id: params[:id])
+  end
+
   def user_params
-    if params[:user][:password].blank?
-      params.require(:user).permit(:name, :email)
-    else
-      params.require(:user).permit(:name, :email, :password)
-    end
+    params.require(:user).permit(:name, :email, :password)
   end
 end
