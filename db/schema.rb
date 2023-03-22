@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_14_032851) do
+ActiveRecord::Schema.define(version: 2023_03_22_095254) do
 
   create_table "answers", id: false, charset: "utf8mb3", force: :cascade do |t|
     t.integer "id"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 2023_03_14_032851) do
 
   create_table "categories", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
+    t.integer "total_exam"
+    t.integer "total_word"
+    t.string "description"
+    t.string "created_at"
   end
 
   create_table "lessons", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
@@ -51,7 +55,7 @@ ActiveRecord::Schema.define(version: 2023_03_14_032851) do
     t.index ["user_id"], name: "user_id"
   end
 
-  create_table "users", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
+  create_table "users", id: :integer, charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "avatar"
     t.boolean "admin"
@@ -60,12 +64,15 @@ ActiveRecord::Schema.define(version: 2023_03_14_032851) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "words", id: false, charset: "utf8mb3", force: :cascade do |t|
-    t.integer "id"
+  create_table "words", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
     t.integer "category_id"
     t.string "word"
     t.string "meaning"

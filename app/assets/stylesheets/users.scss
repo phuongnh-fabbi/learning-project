@@ -1,0 +1,56 @@
+.card {
+  // width: 350px;
+  background-color: #efefef;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+  margin: auto;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.image img {
+  transition: all 0.5s;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold
+}
+
+.email {
+  font-size: 14px;
+  font-weight: 600
+}
+
+.number {
+  font-size: 22px;
+  font-weight: bold
+}
+
+.follow {
+  font-size: 12px;
+  font-weight: 500;
+  color: #444444
+}
+
+.btn1 {
+  width: 150px;
+  border: none;
+  background-color: #000;
+  color: #aeaeae;
+  font-size: 15px;
+  display: block;
+  margin: 20px auto;
+  padding: 5px;
+}
+
+.text span {
+  font-size: 13px;
+  color: #545454;
+  font-weight: 500
+}
