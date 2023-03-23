@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def content_not_found
+    render file: "#{Rails.root}/public/not_found.html", layout: true, status: :not_found
+  end 
 end

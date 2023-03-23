@@ -31,6 +31,12 @@
 
 en:
   hello: "Hello world"
+  word:
+    show:
+      title: "Detail Word"
+  category:
+    index:
+      title: "All Courses"
   controllers:
     update:
       success: "Profile updated"

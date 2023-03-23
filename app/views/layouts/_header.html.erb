@@ -17,7 +17,7 @@
         <% if user_signed_in?%>
           <li><%= link_to 'Home', root_path %></li>
           <li><a href="#">Memorised Word</a></li>
-          <li><a href="#">Category</a></li>
+          <li><%= link_to 'Category', categories_path %></li>
           <li><a href="#">Exam</a></li>
           <li><%= link_to 'Profile', user_path(current_user) %></li>
           <li><%= button_to 'Log out', destroy_user_session_path, method: :delete %></li>
