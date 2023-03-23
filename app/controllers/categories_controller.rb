@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    if(params[:category])
+    if params[:category]
       @categories =  Category.search(params[:category])
     else
       @categories =  Category.all
@@ -8,7 +8,13 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(id: params[:id])
-    @words = @category.words
+    find_category
+    @words = @category&.words
   end
+
+  private 
+    def find_category 
+      @category = Category.find_by(id: params[:id])
+      content_not_found unless @category.present?
+    end
 end
