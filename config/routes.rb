@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :words, only: [:show]
   resources :categories, only: [:index, :show]
+  namespace :admin do
+    resources :users, only: [:index, :edit, :update, :destroy]
+  end
 end
