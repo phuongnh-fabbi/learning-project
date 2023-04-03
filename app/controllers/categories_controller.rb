@@ -10,6 +10,13 @@ class CategoriesController < ApplicationController
   def show
     find_category
     @words = @category&.words
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = ['Words', Date.today.to_s].join(' ')
+        send_data Word.to_csv(@words), filename: filename, content_type: 'text/csv'
+      end
+    end
   end
 
   private 

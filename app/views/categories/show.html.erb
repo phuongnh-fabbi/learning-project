@@ -1,4 +1,6 @@
 <h2><%= @category.name %></h2>
-<% for word in @words %>
+<%= link_to t('category.show.download_csv'), category_path(format: :csv) %>
+
+<% @words.each do |word| %>
   <h1><%= word.word %>
 <% end %>
