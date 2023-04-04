@@ -24,11 +24,6 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path
   end
 
-  def import
-    User.import_file(params[:file])
-    redirect_to admin_users_path, notice: t("controllers.import.success")
-  end
-
   private 
     def find_user 
       @user = User.find_by(id: params[:id])

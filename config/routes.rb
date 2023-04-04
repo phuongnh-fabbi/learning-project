@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :words, only: [:show]
   resources :categories, only: [:index, :show]
+  resources :imports do
+    collection {post :import}
+  end
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :destroy]
-    resources :users do
-      collection {post :import}
-    end
   end
 end
