@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   def content_not_found
     render file: "#{Rails.root}/public/not_found.html", layout: true, status: :not_found
   end 
+
+  def require_admin
+    unless current_user.admin?
+      redirect_to root_path
+    end
+  end
 end
