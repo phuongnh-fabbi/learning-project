@@ -3,15 +3,15 @@
     <h1>Update your profile</h1>
     <%= form_for(@user) do |f| %>
       <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, class: "form-control" %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: "form-control" %>
 
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: "form-control" %>
 
-      <%= f.submit 'Update', class: "btn btn-primary" %>
+      <%= f.submit "Update", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

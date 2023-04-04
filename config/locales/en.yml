@@ -47,6 +47,9 @@ en:
       title: "List user"
       button_delete: "Delete"
       button_edit: "Edit"
+      table:
+        name: "Name"
+        email: "Email"
   controllers:
     update:
       success: "Profile updated"
