@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
 
+  patch 'admin/users/:id/edit', controller: 'admin/users', action: :update
   root to: "home#index"
 
   resources :users, only: [:show, :edit, :update]
@@ -10,5 +11,8 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :destroy]
+    resources :users do
+      collection {post :import}
+    end
   end
 end
