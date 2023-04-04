@@ -37,6 +37,8 @@ en:
   category:
     index:
       title: "All Courses"
+    show:
+      download_csv: "Download words CSV"
   controllers:
     update:
       success: "Profile updated"
