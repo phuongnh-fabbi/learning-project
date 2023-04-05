@@ -2,6 +2,7 @@ class Word < ApplicationRecord
   belongs_to :category
 
   class << self
+    # Export word list csv
     def to_csv(collection)
       CSV.generate(col_sep: ' | ') do |csv|
         csv << attribute_names
