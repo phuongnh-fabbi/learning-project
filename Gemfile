@@ -27,6 +27,8 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'roo'
 gem 'activerecord-import'
+gem 'popper_js'
+gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
