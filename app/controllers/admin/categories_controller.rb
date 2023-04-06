@@ -8,7 +8,6 @@ class Admin::CategoriesController < ApplicationController
 
   def new
     @category = Category.new    
-    @url = new_admin_category_path
   
     respond_to do |format|
       format.html
@@ -28,7 +27,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-    @url = edit_admin_category_path(@category)
   end
 
   def update
