@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   patch 'admin/users/:id/edit', controller: 'admin/users', action: :update
   root to: "home#index"
+  post 'admin/categories/new', controller: 'admin/categories', action: :create
+  patch 'admin/categories/:id/edit', controller: 'admin/categories', action: :update
 
   resources :users, only: [:show, :edit, :update]
   resources :words, only: [:show]
@@ -14,5 +16,6 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :destroy]
+    resources :categories, only: [:index, :edit, :update, :new, :create, :destroy]
   end
 end

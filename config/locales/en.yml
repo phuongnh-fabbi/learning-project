@@ -39,6 +39,12 @@ en:
       title: "All Courses"
     show:
       download_csv: "Download words CSV"
+    edit:
+      title: "Edit course"
+      button: "Update course"
+    create:
+      title: "New course"
+      button: "Create course"
   user:
     edit: 
       title: "Edit user"
@@ -53,8 +59,10 @@ en:
         email: "Email"
   controllers:
     update:
-      success: "Profile updated"
+      success: "Updated successfully"
     import:
       success: "Data imported"
     delete:
-      success: "Delete successfully"
+      success: "Deleted successfully"
+    create:
+      success: "Created successfully"

@@ -1,0 +1,15 @@
+<%= form_for [:admin, @category] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :total_exam %>
+  <%= f.text_field :total_exam, class: 'form-control' %>
+
+  <%= f.label :total_word %>
+  <%= f.text_field :total_word, class: 'form-control' %>
+
+  <%= f.label :description  %>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary mt-3" %>
+<% end %>
