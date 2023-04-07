@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1><%= t("lesson.index.title") %></h1>
+    <div class="section-search">
+      <%= form_tag(admin_lessons_path, method: :get) do %>
+        <%= text_field_tag :lesson, params[:lesson] %>
+        <%= submit_tag "Search" %>
+      <% end %>
+    </div>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"><%= t("user.index.table.name") %></th>
+          <th scope="col"><%= t("user.index.table.category") %></th>
+          <th scope="col"><%= t("user.index.button_edit") %></th>
+          <th scope="col"><%= t("user.index.button_delete") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @lessons.each do |lesson| %>
+          <tr>
+            <td><%= link_to lesson.name, admin_lesson_path(lesson) %></td>
+            <td><%= lesson.category.name %></td>
+            <td><%= link_to t("user.index.button_edit"), edit_admin_lesson_path(lesson) %></td>
+            <td><%= button_to t("user.index.button_delete"), admin_lesson_path(lesson), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

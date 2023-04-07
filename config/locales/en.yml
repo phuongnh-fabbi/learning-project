@@ -57,6 +57,14 @@ en:
       table:
         name: "Name"
         email: "Email"
+  lesson: 
+    create:
+      title: "New lesson"
+      add_question: "Add question"
+      add_answer: "Add answer"
+      button: "Create lesson"
+    index:
+      title: "All lessons"
   controllers:
     update:
       success: "Updated successfully"
