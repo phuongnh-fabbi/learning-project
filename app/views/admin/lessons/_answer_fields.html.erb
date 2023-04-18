@@ -1,9 +1,9 @@
 <div class="nested-fields answer-field fieldset">
-  <%= f.label :content, "Answer" %>
+  <%= f.label :content, t("lesson.create.label_answer") %>
   <div class="row">
     <div class="col-md-11">
       <%= f.text_field :content, class: "form-control" %>
-      <%= f.label :correct_answer, t(".correct"), value: "1" %>
+      <%= f.label :correct_answer, t("lesson.create.correct"), value: "0" %>
       <%= f.check_box :correct_answer %>
       <br>
     </div>

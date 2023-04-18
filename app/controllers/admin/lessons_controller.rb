@@ -1,19 +1,19 @@
 class Admin::LessonsController < ApplicationController
   before_action :require_admin
-  before_action :find_lesson, only: [:destroy, :show]
+  before_action :find_lesson, only: %i[destroy show]
 
   def index
-    if params[:lesson]
-      @lessons =  Lesson.search(params[:lesson])
-    else
-      @lessons =  Lesson.all
-    end
+    @lesson = if params[:lesson]
+                Lesson.search(params[:lesson])
+              else
+                Lesson.all
+              end
   end
 
   def new
     @lesson = Lesson.new
     @lesson.questions.build.answers.build
-    # @categories = Category.all
+    @categories = Category.all.map { |category| [category.name, category.id] }
   end
 
   def create
@@ -22,12 +22,11 @@ class Admin::LessonsController < ApplicationController
       flash[:success] = t('controllers.create.success')
       redirect_to admin_lessons_path
     else
-      render "new"
+      render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
   def destroy
     @lesson.destroy
@@ -35,14 +34,12 @@ class Admin::LessonsController < ApplicationController
     redirect_to admin_lessons_path
   end
 
-  private 
+  private
 
-  def lesson_params 
+  def lesson_params
     params.require(:lesson).permit(:category_id, :name,
-      questions_attributes: [:id, :content, :_destroy,
-        answers_attributes: [:id, :content, :correct_answer, :_destroy]
-      ]
-    )
+                                   questions_attributes: [:id, :content, :_destroy,
+                                                          { answers_attributes: %i[id content correct_answer _destroy] }])
   end
 
   def find_lesson

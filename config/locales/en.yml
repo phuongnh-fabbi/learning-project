@@ -62,7 +62,9 @@ en:
       title: "New lesson"
       add_question: "Add question"
       add_answer: "Add answer"
+      label_answer: "Answer"
       button: "Create lesson"
+      correct: "Correct"
     index:
       title: "All lessons"
   controllers:
