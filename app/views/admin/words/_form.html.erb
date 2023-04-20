@@ -1,0 +1,15 @@
+<%= form_for [:admin, @word] do |f| %>
+  <%= f.label :word %>
+  <%= f.text_field :word, class: 'form-control' %>
+
+  <%= f.label :category_id %>
+  <%= f.select :category_id, options_for_select(@categories), {include_blank: true}, class: "form-control" %>
+
+  <%= f.label :meaning %>
+  <%= f.text_field :meaning, class: 'form-control' %>
+
+  <%= f.label :note  %>
+  <%= f.text_field :note, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary mt-3" %>
+<% end %>
