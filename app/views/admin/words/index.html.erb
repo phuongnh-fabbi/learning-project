@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1><%= t("word.index.title") %></h1>
+    <div class="btn-group-fab" role="group" aria-label="create">
+      <div>
+      <%= link_to(new_admin_word_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-create'}) do %>
+        <button type="button" class="btn btn-main btn-secondary has-tooltip" data-placement="left" title="create"> <i class="fa fa-plus"></i> Create </button>
+      <% end %>
+      </div>
+    </div>
+
+    <div id="modal-create" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+
+    <div id="modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"><%= t("user.index.table.name") %></th>
+          <th scope="col"><%= t("user.index.table.email") %></th>
+          <th scope="col"><%= t("user.index.table.email") %></th>
+          <th scope="col"><%= t("user.index.table.email") %></th>
+          <th scope="col"><%= t("user.index.button_edit") %></th>
+          <th scope="col"><%= t("user.index.button_delete") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @words.each do |word| %>
+          <tr>
+            <td><%= word.word %></td>
+            <td><%= word.category.name %></td>
+            <td><%= word.meaning %></td>
+            <td><%= truncate word.note, length: 30 %></td>
+            <td><%= link_to t("user.index.button_edit"), edit_admin_word_path(word),  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-edit'} %></td>
+            <td><%= button_to t("user.index.button_delete"), admin_word_path(word), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
